@@ -7,7 +7,7 @@ df= pd.read_csv('Latest Covid-19 India Status.csv')
 print(df.head())
 print(df.isna().sum())
 
-
+# Canvas that represent visuals of Total cases reported to Active csaes
 plt.figure(figsize=(12, 6))
 sns.regplot(x='Total Cases',y='Active',data=df)
 plt.title('Total cases v/s Active cases')
