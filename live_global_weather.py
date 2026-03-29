@@ -32,3 +32,49 @@ avg_temp = df.groupby('country')['temperature_celsius'].mean()
 
 print("Hottest Countries", avg_temp.nlargest(10))
 print("Coldest Countries" , avg_temp.nsmallest(10))
+
+#average temperature,humidity and wind speed
+# print(f" Average temperature of countries in celcius,\n{df.groupby('country')['temperature_celsius'].mean()}")
+# print(f" Average humidity of countries ,\n{df.groupby('country')['humidity'].mean()}")
+# print(f" Average wind speed of countries ,\n{df.groupby('country')['wind_kph'].mean()}")
+
+print(df.groupby('country')[['temperature_celsius','humidity','wind_kph']].mean())
+
+# PLACES WHERE TEMP AND FEELS LIKE DIFFER THE MOST
+
+df['temp_diff'] = np.abs(df['temperature_celsius'] - df['feels_like_celsius'])
+print("PLACES WHERE TEMP AND FEELS LIKE DIFFER THE MOST")
+print(df[['country', 'location_name', 'temperature_celsius', 
+          'feels_like_celsius', 'temp_diff']].nlargest(10, 'temp_diff'))
+
+# Day length
+
+print(df[['sunrise','sunset']].head())
+df['sunrise'] = pd.to_datetime(df['sunrise'])
+df['sunset']  = pd.to_datetime(df['sunset'])
+
+df['day_length'] = df['sunset'] - df['sunrise']
+
+print("DAY LENGTH PER CITY")
+print(df[['country', 'location_name', 
+          'sunrise', 'sunset', 'day_length']].head(10))
+
+# common weather condition
+print(f" Most common weather condition ,\n {df['condition_text'].value_counts()}")
+
+# air_quality_PM2.5
+# print(df['air_quality_PM2.5'].head())
+
+print(df.nlargest(10,'air_quality_PM2.5')[['country', 'location_name', 'air_quality_PM2.5']])
+
+# common wind direction
+# print(df['wind_direction'].head())
+
+print(f" Most common wind directions ,\n {df['wind_direction'].value_counts()}")
+
+df['temp_category'] = np.where(df['temperature_celsius'] > 30, 'Hot',
+                        np.where(df['temperature_celsius'] >= 15, 'Mild',
+                            'Cold'))
+
+print(df[['country', 'location_name', 
+          'temperature_celsius', 'temp_category']].value_counts())
