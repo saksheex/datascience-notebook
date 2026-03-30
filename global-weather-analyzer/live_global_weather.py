@@ -78,3 +78,16 @@ df['temp_category'] = np.where(df['temperature_celsius'] > 30, 'Hot',
 
 print(df[['country', 'location_name', 
           'temperature_celsius', 'temp_category']].value_counts())
+
+# Graph of 10 hottest country
+
+avg_temp = df.groupby('country')['temperature_celsius'].mean()
+top10 = avg_temp.nlargest(10)
+
+plt.bar(top10.index, top10.values)
+plt.title("Top 10 Hottest Countries")
+plt.xlabel("Country")
+plt.ylabel("Average Temperature (°C)")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
