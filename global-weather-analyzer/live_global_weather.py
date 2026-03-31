@@ -91,3 +91,83 @@ plt.ylabel("Average Temperature (°C)")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+
+# Coldest countries
+avg_temp = df.groupby('country')['temperature_celsius'].mean()
+top10 = avg_temp.nsmallest(10)
+
+plt.bar(top10.index, top10.values)
+plt.title("Top 10 Coldest Countries")
+plt.xlabel("Country")
+plt.ylabel("Average Temperature (°C)")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+# temperature vs feels_like
+data = df[df['country'] == 'Turkey']
+cities = data['location_name']
+temp = data['temperature_celsius']
+feels_like = data['feels_like_celsius']
+plt.plot(cities, temp,  label='temp')                # first line
+plt.plot(cities, feels_like, label='feels_like')      # second line
+plt.legend()
+plt.title('Temperature v/s Feels_like')
+plt.xlabel('Temperaure in C')
+plt.ylabel('Feels_like')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+
+# global wind speed distribution
+air = df['air_quality_Ozone']
+plt.hist(air, bins= 20)
+plt.tight_layout()
+plt.show()
+
+#  temperature_celsius vs humidity 
+# assign color to each weather condition
+def get_color(condition):
+    if 'sun' in condition.lower():
+        return 'orange'
+    elif 'cloudy' in condition.lower():
+        return 'blue'
+    else :
+        return "gray"
+
+colors = df['condition_text'].apply(get_color)
+
+plt.scatter(df['temperature_celsius'], df['humidity'],
+            c = colors,             
+            alpha = 0.5,
+            s = 10)
+plt.title('Temperature vs Humidity by Category')
+plt.xlabel('Temperature (°C)')
+plt.ylabel('Humidity (%)')
+plt.show()
+
+# Common weather condition
+weather5 = df['condition_text'].value_counts().head(5)
+
+plt.pie(weather5.values,
+        labels = weather5.index,
+        autopct = '%1.1f%%',
+        )
+plt.title('Top 5 Weather Conditions Globally')
+plt.tight_layout()
+plt.show()
+
+countries = ['India', 'USA', 'Canada', 'Australia', 'Russia']
+
+data = [df[df['country'] == c]['temperature_celsius'].values for c in countries]
+
+plt.boxplot(data,
+            labels=countries,
+            patch_artist=True)
+plt.title('Temperature Distribution by Country')
+plt.xlabel('Country')
+plt.ylabel('Temperature (°C)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
