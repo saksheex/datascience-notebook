@@ -171,3 +171,21 @@ plt.ylabel('Temperature (°C)')
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+
+# Trend line to scatter plot 
+plt.scatter(df['temperature_celsius'], df['humidity'],
+            c = colors,             
+            alpha = 0.5,
+            s = 10)
+m, b = np.polyfit(df['temperature_celsius'], df['humidity'], 1)
+plt.plot(df['temperature_celsius'],
+         m * df['temperature_celsius'] + b,
+         color='red',
+         label='Trend Line')
+
+plt.title('Temperature vs Humidity with Trend Line')
+plt.xlabel('Temperature (°C)')
+plt.ylabel('Humidity (%)')
+plt.legend()
+plt.tight_layout()
+plt.show()
