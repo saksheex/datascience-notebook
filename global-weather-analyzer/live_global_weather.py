@@ -189,3 +189,15 @@ plt.ylabel('Humidity (%)')
 plt.legend()
 plt.tight_layout()
 plt.show()
+
+# Correlation heatmap 
+cor = df.select_dtypes(include='number').corr()    # correlation!
+print(cor)
+plt.figure(figsize=(15, 12))
+plt.imshow(cor)
+plt.colorbar()
+plt.xticks(range(len(cor.columns)), cor.columns, rotation=90)
+plt.yticks(range(len(cor.columns)), cor.columns)
+plt.title('Correlation Heatmap')
+plt.tight_layout()
+plt.show()
