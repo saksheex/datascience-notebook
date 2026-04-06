@@ -201,3 +201,30 @@ plt.yticks(range(len(cor.columns)), cor.columns)
 plt.title('Correlation Heatmap')
 plt.tight_layout()
 plt.show()
+
+city1 = input("Enter first city name: ")
+city2 = input("Enter second city name: ")
+data1 = df[df["location_name"] == city1]
+data2 = df[df["location_name"] == city2]
+if data1.empty:
+    print(f"City '{city1}' not found in dataset!")
+elif data2.empty:
+    print(f"City '{city2}' not found in dataset!")
+else:
+ columns = ['temperature_celsius', 'humidity', 
+           'wind_kph', 'pressure_mb', 'visibility_km']
+city1_values = data1[columns].values[0]
+city2_values = data2[columns].values[0]
+
+x = np.arange(len(columns))
+plt.figure(figsize=(12, 6))
+plt.bar(x - 0.2, city1_values, width=0.4, label=city1, color='blue', alpha=0.7)
+plt.bar(x + 0.2, city2_values, width=0.4, label=city2, color='red',  alpha=0.7)
+
+plt.title(f'{city1} vs {city2} — Weather Comparison')
+plt.xlabel('Weather Metrics')
+plt.ylabel('Values')
+plt.xticks(x, columns, rotation=45)
+plt.legend()
+plt.tight_layout()
+plt.show()
