@@ -228,3 +228,16 @@ plt.xticks(x, columns, rotation=45)
 plt.legend()
 plt.tight_layout()
 plt.show()
+
+temp = df['temperature_celsius']
+humidity = df['humidity']
+wind = df['wind_kph']
+t = (temp - np.min(temp)) / (np.max(temp) - np.min(temp))
+h = (humidity - np.min(humidity)) / (np.max(humidity) - np.min(humidity))
+w = (wind - np.min(wind)) / (np.max(wind) - np.min(wind))
+df['temp_normalized']     = t
+df['humidity_normalized'] = h
+df['wind_normalized']     = w
+print(t)
+print(h)
+print(w)
