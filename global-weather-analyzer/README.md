@@ -57,6 +57,25 @@ Built completely from scratch using **Pandas, NumPy and Matplotlib** — no shor
 - ✅ Created `temp_category` column using `np.where()` — labelled each row as `Hot`, `Mild` or `Cold`
 - ✅ Found most common wind direction globally
 
+### 🟠 Level 3 — Visualization (Matplotlib)
+
+- ✅Plot a bar chart of top 10 hottest countries by average temperature
+- ✅Plot a bar chart of top 10 coldest countries by average temperature
+- ✅Plot a line chart comparing temperature_celsius vs feels_like_celsius for one country's cities
+- ✅Plot a histogram of global wind speed distribution
+- ✅Plot a scatter plot of temperature_celsius vs humidity — color the points by condition (sunny/rainy/cloudy)
+- ✅Plot a pie chart of the most common weather conditions globally
+- ✅Plot a box plot comparing temperature across 5 different countries
+- ✅Add a trend line to your scatter plot using np.polyfit() and np.poly1d()
+
+🔴 Level 4 — Advanced (Full Analysis)
+
+- ✅Build a correlation heatmap of all numeric columns using Matplotlib
+- ✅Create a city comparison tool — input any 2 city names and display a side-by-side bar chart of all weather metrics
+- ✅Plot day length vs latitude scatter plot and explain the pattern using NumPy
+- ✅Normalize temperature, humidity, wind speed using NumPy normalization formula:
+
+    (value - min) / (max - min)
 ---
 
 ## 📊 Key Insights
@@ -112,8 +131,8 @@ global-weather-analyzer/
 |---|---|---|
 | 🟢 Level 1 | Data Loading & Exploration | ✅ Complete |
 | 🟡 Level 2 | Pandas + NumPy Analysis | ✅ Complete |
-| 🟠 Level 3 | Visualization | 🔄 In Progress |
-| 🔴 Level 4 | Advanced Analysis | 🔄 Upcoming |
+| 🟠 Level 3 | Visualization |  ✅ Complete |
+| 🔴 Level 4 | Advanced Analysis | ✅ Complete |
 
 ---
 
