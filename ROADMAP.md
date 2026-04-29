@@ -483,7 +483,7 @@ You do need:
 - ✅ Projects (theory alone won't get you there)
 - ✅ Patience (it takes time; trust the process)
 
-**The best time to start was yesterday. The second best time is today.** 🚀
+
 
 ---
 
