@@ -501,7 +501,7 @@ This learning journey wouldn't be possible without:
 
 ## 📈 Repository Statistics
 
-- **Total Commits:** 200+
+- **Total Commits:** 100+
 - **Projects:** 4+ portfolio projects
 - **Learning Time:** 250+ hours
 - **Languages:** Python
